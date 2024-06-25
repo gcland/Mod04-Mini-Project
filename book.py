@@ -14,12 +14,23 @@ class book:
     
     def borrow_book(self):
         if self.__is_available:
-            self.is_available = False
+            self.__is_available = False
             return True
-        return False
+        else:
+            return False
     
     def return_book(self):
         self.__is_available = True
+    
+    def get_author(self):
+        return self.__author
+    
+    def get_isbn(self):
+        return self.__isbn
+    
+    def get_publish_date(self):
+        return self.__publish_date
+
 
 class Nonfiction(book):
     def __init__(self, name, description, category):
