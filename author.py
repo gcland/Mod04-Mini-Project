@@ -1,10 +1,18 @@
 class Author:
-    def __init__(self, auth_name, biography):
+    def __init__(self, auth_name):
         self.auth_name = auth_name
-        self.biography = biography
+        self.biography = []
 
     def get_auth_name(self):
         return self.auth_name
+
+    def add_biography(self, auth_name):
+        while True:
+            bio_add = input(f"Enter book by {auth_name} to add to biography ('end' to finish.): ")
+            if bio_add.lower() == "end":
+                break
+            else:
+                self.biography.append(bio_add)
 
     def get_biography(self):
         print(f"{self.auth_name} Biography:")

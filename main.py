@@ -1,28 +1,25 @@
 from book import book
 from author import Author
 
-def add_author():
-    auth_name = input("Enter author name: ")
-    biography = []
-    while True:
-        bio_add = input(f"Enter book by {auth_name} to add to biography ('end' to finish.): ")
-        if bio_add.lower() == "end":
-            break
-        else:
-            biography.append(bio_add)
-    author = Author(auth_name, biography)
-    print(f"{auth_name} and biography added to Library Management System. ")
-    author.get_auth_name()
+def add_author(auth_name, author, authors):
+        authors.append(auth_name)
+        author.add_biography(auth_name)
+        print(f"{auth_name} and biography added to Library Management System. ")
+        author.get_biography()
+
+def view_author(author):
     author.get_biography()
 
-
+def display_all_authors(authors):  
+     authors.sort()
+     for author in authors:
+         print(author)
 
 def add_book(library):
     title = input("Enter book title: ")
     author = input("Enter book author: ")
     publish_date = input("Enter book publication date: ")
     isbn = input("Enter book ISBN: ")
-
     library[isbn] = book(title, author, isbn, publish_date)
     library[isbn].get_status()
 
@@ -58,6 +55,7 @@ def main():
     print("\nWelcome to the Library Management System!")
     library = {} #available books
     checked_out = {} #borrowed books
+    authors = []
     while True:
         print("\nLibrary Management System Main Menu:")
         print("\n1. Author Operations\n2. Book Operations\n3. User Operations\n4. Quit")
@@ -70,12 +68,19 @@ def main():
                     choice = input("Enter selection: ")
                     try: 
                         if choice == '1':
-                            add_author()
-                        elif choice =='2':
-                            # view_author()
+                            auth_name = input("Enter author name: ")
+                            if auth_name in authors:
+                                print(f"{auth_name} is already in the Library Management System.")
+                            else:
+                                author = Author(auth_name)
+                                add_author(auth_name, author, authors)
+                        elif choice == '2':
+                            auth_name = input("Enter author name to view biography: ")
+                            author = Author(auth_name)
+                            view_author(author)
                             pass
                         elif choice == '3':
-                            # display_all_authors()
+                            display_all_authors(authors)
                             pass
                         elif choice =='4':
                             break
