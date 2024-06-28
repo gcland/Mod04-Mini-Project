@@ -31,6 +31,16 @@ class book:
     def get_publish_date(self):
         return self.__publish_date
 
+    def get_book_details(self):
+        print(f"Title: {self.__title}.")
+        print(f"Author: {self.__author}.")
+        print(f"ISBN: {self.__isbn}.")
+        print(f"Publish date: {self.__publish_date}.")
+        if self.__is_available == False:
+            print("Availability: checked-out.")
+        else: 
+            print("Availability: checked-in.")
+        
 
 class Nonfiction(book):
     def __init__(self, name, description, category):
