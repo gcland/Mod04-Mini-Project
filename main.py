@@ -4,6 +4,9 @@ from book import Fiction
 from author import Author
 from user import User
 
+#See Github Repository: https://github.com/gcland/Mod04-Mini-Project/tree/main
+#See README for basic instructions
+
 def add_author(auth_name, authors):   
         biography = []
         authors[auth_name] = Author(auth_name, biography)
@@ -228,4 +231,5 @@ def main():
             print(f'Error: {e}.')
         finally:
             print("Thank you for using the Library Management System!")
+
 main()
