@@ -1,4 +1,4 @@
-class book:
+class Book:
     def __init__(self, title, author, isbn, publish_date):
         self.__title = title
         self.__author = author
@@ -32,24 +32,52 @@ class book:
         return self.__publish_date
 
     def get_book_details(self):
-        print(f"Title: {self.__title}.")
+        print(f"\nTitle: {self.__title}.")
         print(f"Author: {self.__author}.")
         print(f"ISBN: {self.__isbn}.")
         print(f"Publish date: {self.__publish_date}.")
         if self.__is_available == False:
-            print("Availability: checked-out.")
+            print("Availability: Checked-out.")
         else: 
-            print("Availability: checked-in.")
+            print("Availability: Checked-in.")
         
 
-class Nonfiction(book):
-    def __init__(self, name, description, category):
-        self.name = name
-        self.description = description
+class NonFiction(Book):
+    def __init__(self, title, author, isbn, publish_date, category, description):
+        super().__init__(title, author, isbn, publish_date)
         self.category = category
+        self.description = description
+        self.fict = 'Nonfiction'
 
-class Fiction(book):
-    def __init__(self, name, description, category):
-        self.name = name
-        self.description = description
+    def get_genrebook_details(self):
+        print(f"\nTitle: {self.get_title()}.")
+        print(f"{self.fict} book.") #added genre feature
+        print(f"Category: {self.category}.") #added genre feature
+        print(f"Author: {self.get_author()}.")
+        print(f"Description: {self.description}.") #added genre feature
+        print(f"ISBN: {self.get_isbn()}.")
+        print(f"Publish date: {self.get_publish_date()}.")
+        if self.get_status() == False:
+            print("Availability: Checked-out.")
+        else: 
+            print("Availability: Checked-in.")
+
+class Fiction(Book):
+    def __init__(self, title, author, isbn, publish_date, category, description):
+        super().__init__(title, author, isbn, publish_date)
         self.category = category
+        self.description = description
+        self.fict = 'Fiction'
+
+    def get_genrebook_details(self):
+        print(f"\nTitle: {self.get_title()}.")
+        print(f"{self.fict} book.") #added genre feature
+        print(f"Category: {self.category}.") #added genre feature
+        print(f"Author: {self.get_author()}.")
+        print(f"Description: {self.description}.") #added genre feature
+        print(f"ISBN: {self.get_isbn()}.")
+        print(f"Publish date: {self.get_publish_date()}.")
+        if self.get_status() == False:
+            print("Availability: Checked-out.")
+        else: 
+            print("Availability: Checked-in.")

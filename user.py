@@ -17,7 +17,7 @@ class User:
         # return self.borrowed_books
     
     def get_user_details(self):
-        print(f"User name: {self.user_name}.")
+        print(f"\nUser name: {self.user_name}.")
         print(f"Library ID: {self.library_ID}.")
         self.view_books()
         
